@@ -42,6 +42,9 @@ func main(){
 	 }) 
 	 router.POST("/task",handler.CreateTaskHandler(pool))
 	 router.GET("/tasks",handler.GetAllTasksHandler(pool))
+	 router.GET("/task/:id",handler.GetTaskByIdHandler(pool))
+	 router.PUT("/task/:id",handler.UpdateTaskHandler(pool))
+	 router.DELETE("/task/:id",handler.DeleteTaskHandler(pool))
 	 router.Run(":" + cfg.Port)
 
 }
