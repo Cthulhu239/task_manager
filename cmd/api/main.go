@@ -6,6 +6,7 @@ import (
 
 	"github.com/Cthulhu239/task_manager/internal/config"
 	"github.com/Cthulhu239/task_manager/internal/database"
+	"github.com/Cthulhu239/task_manager/internal/handlers"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -39,7 +40,8 @@ func main(){
 			"database":"connected",
 		   })
 	 }) 
-	 
+	 router.POST("/task",handler.CreateTaskHandler(pool))
+	 router.GET("/tasks",handler.GetAllTasksHandler(pool))
 	 router.Run(":" + cfg.Port)
 
 }
